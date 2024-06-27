@@ -1,0 +1,12 @@
+$header-height: 10%;
+$main-height: calc(100% - $header-height);
+
+app-header {
+    display: block;
+    height: $header-height;
+}
+
+app-sidenav {
+    display: block;
+    height: $main-height;
+}
