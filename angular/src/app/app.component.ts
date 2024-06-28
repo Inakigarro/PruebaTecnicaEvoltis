@@ -6,7 +6,11 @@ import { SidenavComponent } from './sidenav/sidenav.component';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [HeaderComponent, SidenavComponent, RouterOutlet],
+  imports: [
+    HeaderComponent,
+    SidenavComponent,
+    RouterOutlet,
+    ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

@@ -1,0 +1,11 @@
+<mat-toolbar>
+	<button mat-raised-button>New</button>
+</mat-toolbar>
+@if (listLoaded$) {
+<app-list
+	[listId]="listId"
+	[listTitle]="listTitle"
+	[listHeaders]="listHeaders"
+	[listData]="listData$"
+></app-list>
+}
