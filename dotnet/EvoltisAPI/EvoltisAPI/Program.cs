@@ -1,12 +1,17 @@
 using EvoltisAPI.AutoMapperProfiles;
+using EvoltisAPI.Contracts;
 using EvoltisAPI.Persistence;
 using EvoltisAPI.Repositories;
 using EvoltisAPI.Services;
+using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+// Add Validators.
+builder.Services.AddScoped<IValidator<CreateCourtDto>, CreateCourtValidator>();
+builder.Services.AddScoped<IValidator<CourtDto>, CourtValidator>();
 // Add AutoMapper.
 builder.Services.AddAutoMapper(opts =>
 {
