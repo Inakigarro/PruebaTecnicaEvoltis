@@ -44,8 +44,8 @@ public class CourtController : ControllerBase
         }
     }
 
-    [HttpGet("GetCourtById")]
-    public async Task<IActionResult> GetCourtByIdAsync(Guid id)
+    [HttpGet("GetCourtById/{id}")]
+    public async Task<IActionResult> GetCourtByIdAsync([FromRoute] Guid id)
     {
         try
         {

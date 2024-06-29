@@ -1,5 +1,10 @@
 <mat-toolbar>
-	<button mat-raised-button>New</button>
+	<button
+		mat-raised-button
+		(click)="onNewButtonClicked()"
+	>
+		New
+	</button>
 </mat-toolbar>
 @if (listLoaded$) {
 <app-list

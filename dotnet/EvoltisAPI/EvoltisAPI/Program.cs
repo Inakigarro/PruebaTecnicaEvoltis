@@ -15,6 +15,11 @@ builder.Services.AddAutoMapper(opts =>
 
 // Database configuration.
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+if (string.IsNullOrWhiteSpace(connectionString))
+{
+    throw new InvalidOperationException("Connection string is not set.");
+}
+
 builder.Services.AddDbContext<EvoltisDbContext>(opts =>
     opts.UseMySQL(connectionString, assembly => assembly.MigrationsAssembly(typeof(EvoltisDbContext).Assembly.FullName)));
 
@@ -40,7 +45,10 @@ if (app.Environment.IsDevelopment())
 
 app.UseCors(builder =>
 {
-    builder.WithOrigins("http://localhost:4200", "http://localhost:5018")
+    builder.WithOrigins(
+        "http://localhost:4200",
+        "http://localhost:5018",
+        "https://localhost:7151/")
         .AllowAnyHeader()
         .AllowAnyMethod();
 });

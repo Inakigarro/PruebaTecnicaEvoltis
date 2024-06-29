@@ -1,17 +1,12 @@
 import { Component } from '@angular/core';
 import { CourtService } from '../../domain/service/court.service';
 import { Court } from '../../shared';
-import { ListComponent } from '../../../list/list.component';
-import { CommonModule } from '@angular/common';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatButtonModule } from '@angular/material/button';
+import { CourtsGenericsActions } from '../../domain/state/court.actions';
 
 export const COURT_LIST_ID = 'court-list';
 
 @Component({
   selector: 'app-court-list',
-  standalone: true,
-  imports: [CommonModule, ListComponent, MatToolbarModule, MatButtonModule],
   templateUrl: './court-list.component.html',
   styleUrl: './court-list.component.scss'
 })
@@ -23,4 +18,8 @@ export class CourtListComponent {
   public listData$ = this.courtService.courtsList$;
 
   constructor(private courtService: CourtService) {}
+
+  public onNewButtonClicked() {
+    this.courtService.dispatch(CourtsGenericsActions.newCourtButtonClicked());
+  }
 }
